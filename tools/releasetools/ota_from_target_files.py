@@ -828,7 +828,18 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.SetPermissionsRecursive("/tmp/install", 0, 0, 0755, 0644, None, None)
   script.SetPermissionsRecursive("/tmp/install/bin", 0, 0, 0755, 0755, None, None)
 
+  script.Print("##########################################");
+  script.Print("#  _    _           _      ____   _____  #");
+  script.Print("# | |  | |         | |    / __ \ / ____| #");
+  script.Print("# | |__| | __ _ ___| |__ | |  | | (___   #");
+  script.Print("# |  __  |/ _` / __| '_ \| |  | |\___ \  #");
+  script.Print("# | |  | | (_| \__ \ | | | |__| |____) | #");
+  script.Print("# |_|  |_|\__,_|___/_| |_|\____/|_____/  #");
+  script.Print("#                                        #");
+  script.Print("##########################################");
+
   if OPTIONS.backuptool:
+    script.Print("Backup");
     script.Mount("/system")
     script.RunBackup("backup")
     script.Unmount("/system")
@@ -875,6 +886,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   device_specific.FullOTA_PostValidate()
 
   if OPTIONS.backuptool:
+    script.Print("Restore");
     script.ShowProgress(0.02, 10)
     script.Mount("/system")
     script.RunBackup("restore")
